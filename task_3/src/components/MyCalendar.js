@@ -14,7 +14,7 @@ const MyCalendar = () => {
     const fetchCustomerData = async (link) => {
       const response = await fetch(link);
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Something went wrong");
       }
 
       return response.json();
@@ -24,7 +24,7 @@ const MyCalendar = () => {
       try {
         const response = await fetch(API_URL + "/trainings");
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Something went wrong");
         }
         const data = await response.json();
         const formattedTrainings = await Promise.all(
@@ -54,7 +54,7 @@ const MyCalendar = () => {
       }
     };
     fetchData();
-  }, []); // empty dependency array since we only want to fetch data once
+  }, []); 
 
   return (
     <div>
@@ -63,7 +63,7 @@ const MyCalendar = () => {
         events={trainings}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 500 }}
+        style={{ height: 600 }}
       />
     </div>
   );
